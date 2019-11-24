@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_theme_text">#000000</color>
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#00574B</color>
+    <color name="color_accent">#D81B60</color>
+
+    <color name="call_button">#3fad37</color>
+    <color name="call_button_pressed">#318a2b</color>
+    <color name="text_button">#1baad1</color>
+    <color name="text_button_pressed">#178dad</color>
+    <color name="email_button">#bdbdbd</color>
+    <color name="email_button_pressed">#999999</color>
+    <color name="profile_cover">#55000000</color>
+    <color name="profile_cover_pressed">#AA000000</color>
+</resources>
