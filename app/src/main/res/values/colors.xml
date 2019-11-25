@@ -6,8 +6,10 @@
     <color name="color_accent">#D81B60</color>
 
     <color name="call_button">#3fad37</color>
+    <color name="call_swipe">#3fad37</color>
     <color name="call_button_pressed">#318a2b</color>
     <color name="text_button">#1baad1</color>
+    <color name="text_swipe">#1baad1</color>
     <color name="text_button_pressed">#178dad</color>
     <color name="email_button">#bdbdbd</color>
     <color name="email_button_pressed">#999999</color>

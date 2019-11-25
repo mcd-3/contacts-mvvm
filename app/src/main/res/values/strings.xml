@@ -39,6 +39,9 @@
     <string name="toast_gallery_cancelled">No picture was selected</string>
     <string name="title_activity_settings">Settings</string>
 
+    <string name="swipe_right_label">Call</string>
+    <string name="swipe_left_label">Text</string>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

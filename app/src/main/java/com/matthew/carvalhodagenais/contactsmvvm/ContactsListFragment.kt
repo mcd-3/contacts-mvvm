@@ -154,7 +154,7 @@ class ContactsListFragment : Fragment() {
                 replace(this@ContactsListFragment.id, ContactDetailFragment.newInstance())
                 addToBackStack(null)
             }
-            transaction.commit();
+            transaction.commit()
         }
     }
 
@@ -233,7 +233,6 @@ class ContactsListFragment : Fragment() {
             actionState: Int,
             isCurrentlyActive: Boolean
         ) {
-
             RecyclerViewSwipeDecorator.Builder(
                 c,
                 recyclerView,
@@ -242,9 +241,14 @@ class ContactsListFragment : Fragment() {
                 dY,
                 actionState,
                 isCurrentlyActive
-            ).addSwipeLeftBackgroundColor(Color.BLUE)
-                .addSwipeRightLabel("Call")
-                .addSwipeRightBackgroundColor(Color.GREEN)
+            ).addSwipeLeftBackgroundColor(resources.getColor(R.color.text_swipe, null))
+                .addSwipeRightBackgroundColor(resources.getColor(R.color.call_swipe, null))
+                .setSwipeLeftLabelColor(Color.WHITE)
+                .setSwipeRightLabelColor(Color.WHITE)
+                .addSwipeLeftLabel(resources.getString(R.string.swipe_left_label))
+                .addSwipeRightLabel(resources.getString(R.string.swipe_right_label))
+                .addSwipeLeftActionIcon(R.drawable.ic_sms_swipe)
+                .addSwipeRightActionIcon(R.drawable.ic_phone_swipe)
                 .create()
                 .decorate()
 
