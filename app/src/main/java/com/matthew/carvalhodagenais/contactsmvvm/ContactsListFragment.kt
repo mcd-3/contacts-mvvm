@@ -85,6 +85,16 @@ class ContactsListFragment : Fragment() {
         super.onPrepareOptionsMenu(menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.contact_list_menu_settings -> {
+            startActivity(Intent(context, SettingsActivity::class.java))
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -204,6 +214,10 @@ class ContactsListFragment : Fragment() {
         }
     }
 
+    /**
+     * ItemTouchHelper used to swipe RecyclerView items
+     * and create background/child views under each item
+     */
     private var recyclerViewTouchHelper = object: ItemTouchHelper.SimpleCallback(
         0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
         override fun onMove(
