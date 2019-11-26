@@ -31,7 +31,7 @@ class ContactsListFragment : Fragment() {
     companion object {
         fun newInstance() = ContactsListFragment()
 
-        private val REQUEST_CALL = 1
+        private const val REQUEST_CALL = 1
     }
 
     private lateinit var rootView: View

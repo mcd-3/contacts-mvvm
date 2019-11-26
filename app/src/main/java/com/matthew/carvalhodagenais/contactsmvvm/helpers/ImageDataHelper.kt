@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.widget.Toast
 import java.io.*
 import java.lang.Exception
@@ -27,24 +28,9 @@ class ImageDataHelper {
          * @return String name of the file saved
          */
         fun saveImage(bitmap: Bitmap, context: Context): String {
-            val contextWrapper: ContextWrapper = ContextWrapper(context.applicationContext)
-            val directory: File = contextWrapper.getDir("profileImages", Context.MODE_PRIVATE)
-            val path = File(directory, "${UUID.randomUUID()}_profile.png")
-            var outputStream: FileOutputStream? = null
-
-            try {
-                outputStream = FileOutputStream(path)
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-            } catch (e: Exception) {
-                Toast.makeText(context, "Could not save file", Toast.LENGTH_SHORT).show()
-            } finally {
-                try {
-                    outputStream?.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-            return path.name
+            val name = "${UUID.randomUUID()}_profile.png"
+            var saveAsync = SaveImageAsyncTask(bitmap, context).execute(name)
+            return name
         }
 
         /**
@@ -71,18 +57,58 @@ class ImageDataHelper {
          *
          * @param path String Path to where the image is stored
          * @param name String Name of the image
-         * @return Boolean True if the file was deleted, false if it was not deleted
          */
-        fun deleteImage(path: String, name: String): Boolean {
-            var deleted = true
-            try {
-                val image = File(path, name)
-                image.delete()
-            } catch (e: FileNotFoundException) {
-                deleted = false
-                e.printStackTrace()
+        fun deleteImage(path: String, name: String) {
+            val deleteAsyncTask = DeleteImageAsyncTask(path, name).execute()
+        }
+
+        /**
+         * Saves an image to local storage using a background thread
+         *
+         * @param btmp Bitmap image to save
+         * @param cntxt Context of the application
+         */
+        private class SaveImageAsyncTask(btmp: Bitmap, cntxt: Context): AsyncTask<String, Unit, Unit>() {
+            val context = cntxt
+            val bitmap = btmp
+            override fun doInBackground(vararg params: String?) {
+                val contextWrapper: ContextWrapper = ContextWrapper(context.applicationContext)
+                val directory: File = contextWrapper.getDir("profileImages", Context.MODE_PRIVATE)
+                val path = File(directory, params[0].toString())
+                var outputStream: FileOutputStream? = null
+
+                try {
+                    outputStream = FileOutputStream(path)
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                } catch (e: Exception) {
+                    Toast.makeText(context, "Could not save file", Toast.LENGTH_SHORT).show()
+                } finally {
+                    try {
+                        outputStream?.close()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
             }
-            return deleted
+        }
+
+        /**
+         * Deletes an image from internal storage using a background thread
+         *
+         * @param path String Path to where the image is stored
+         * @param name String Name of the image
+         */
+        private class DeleteImageAsyncTask(path: String, name: String): AsyncTask<Unit, Unit, Unit>() {
+            val filePath = path
+            val fileName = name
+            override fun doInBackground(vararg params: Unit?) {
+                try {
+                    val image = File(filePath, fileName)
+                    image.delete()
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 }

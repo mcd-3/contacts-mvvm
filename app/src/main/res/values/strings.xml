@@ -33,6 +33,8 @@
     <string name="dialog_gallery">Gallery</string>
     <string name="dialog_title">Select Image How?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="settings_delete_all">Delete All Contacts</string>
+    <string name="settings_delete_all_description">This will delete all of your contacts stored on this app</string>
 
     <string name="toast_no_camera">No camera was found on this device</string>
     <string name="toast_camera_cancelled">No picture taken</string>

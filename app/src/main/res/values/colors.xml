@@ -15,4 +15,7 @@
     <color name="email_button_pressed">#999999</color>
     <color name="profile_cover">#55000000</color>
     <color name="profile_cover_pressed">#AA000000</color>
+
+    <color name="text_danger">#ff2a00</color>
+    <color name="text_danger_description">#e32500</color>
 </resources>
