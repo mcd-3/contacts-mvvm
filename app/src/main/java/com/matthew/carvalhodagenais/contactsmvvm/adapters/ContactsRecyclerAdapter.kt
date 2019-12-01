@@ -43,15 +43,11 @@ class ContactsRecyclerAdapter: ListAdapter<Contact, ContactsRecyclerAdapter.Cont
         val contact: Contact = getItem(position)
 
         if (contact.first_name != "" && contact.last_name != "") {
-            if (contact.first_name != "" && contact.last_name != "") {
-                holder.nameTextView.text = "${contact.first_name} ${contact.last_name}"
-            } else {
-                if (contact.first_name == "") {
-                    holder.nameTextView.text = contact.last_name.toString()
-                } else {
-                    holder.nameTextView.text = contact.first_name.toString()
-                }
-            }
+            holder.nameTextView.text = "${contact.first_name} ${contact.last_name}"
+        } else if (contact.first_name != "") {
+            holder.nameTextView.text = contact.first_name.toString()
+        } else if (contact.last_name != "") {
+            holder.nameTextView.text = contact.last_name.toString()
         } else if (contact.email != "") {
             holder.nameTextView.text = contact.email.toString()
         } else {
