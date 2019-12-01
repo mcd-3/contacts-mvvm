@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.net.Uri
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -25,6 +26,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 import kotlinx.android.synthetic.main.fragment_contact_list.view.*
 import java.lang.Exception
+import java.util.*
 
 class ContactsListFragment : Fragment() {
 

@@ -5,6 +5,7 @@ import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.contactsmvvm.data.dao.ContactDao
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
+import java.util.*
 
 class ContactRepository(application: Application) {
 
@@ -12,7 +13,7 @@ class ContactRepository(application: Application) {
     private var allContacts: LiveData<List<Contact>>
 
     init {
-        var database: ContactDatabase =
+        val database: ContactDatabase =
             ContactDatabase.getInstance(application.applicationContext)!!
         contactDao = database.contactDao()
         allContacts = contactDao.getAllContacts()
@@ -44,6 +45,10 @@ class ContactRepository(application: Application) {
 
     fun getAllContacts(): LiveData<List<Contact>> {
         return allContacts
+    }
+
+    fun getBirthdays(): LiveData<List<Long>> {
+        return contactDao.getBirthdays()
     }
 
 

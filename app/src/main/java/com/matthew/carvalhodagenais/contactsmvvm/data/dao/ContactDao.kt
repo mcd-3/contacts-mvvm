@@ -3,6 +3,7 @@ package com.matthew.carvalhodagenais.contactsmvvm.data.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
+import java.util.*
 
 /* A DAO has all the necessary methods to interact with the database
  * Each entity has it's own DAO
@@ -28,4 +29,7 @@ interface ContactDao {
 
     @Query("SELECT * FROM contact_table WHERE id = :id")
     fun getContactById(id: Int): LiveData<Contact>
+
+    @Query("SELECT birthday FROM contact_table")
+    fun getBirthdays(): LiveData<List<Long>>
 }

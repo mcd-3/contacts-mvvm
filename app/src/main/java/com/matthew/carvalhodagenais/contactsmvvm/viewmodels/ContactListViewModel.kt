@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.matthew.carvalhodagenais.contactsmvvm.data.ContactRepository
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
 import com.matthew.carvalhodagenais.contactsmvvm.helpers.ImageDataHelper
@@ -77,5 +76,9 @@ class ContactListViewModel(application: Application) : AndroidViewModel(applicat
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun getBirthdays(): LiveData<List<Long>> {
+        return repository.getBirthdays()
     }
 }
