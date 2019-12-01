@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
-import com.matthew.carvalhodagenais.contactsmvvm.helpers.ImageDataHelper
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_contact_detail.*

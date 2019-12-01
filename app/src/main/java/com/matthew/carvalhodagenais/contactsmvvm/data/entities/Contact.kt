@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.contactsmvvm.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.matthew.carvalhodagenais.contactsmvvm.data.DateConverter
 import java.util.Date

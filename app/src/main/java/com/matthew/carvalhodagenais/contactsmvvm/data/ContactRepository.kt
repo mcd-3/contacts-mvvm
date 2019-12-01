@@ -5,7 +5,6 @@ import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.contactsmvvm.data.dao.ContactDao
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
-import java.util.*
 
 class ContactRepository(application: Application) {
 

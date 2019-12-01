@@ -3,7 +3,6 @@ package com.matthew.carvalhodagenais.contactsmvvm.data.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
-import java.util.*
 
 /* A DAO has all the necessary methods to interact with the database
  * Each entity has it's own DAO
