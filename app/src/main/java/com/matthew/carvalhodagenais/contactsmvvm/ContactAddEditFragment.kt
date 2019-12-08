@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.contactsmvvm
 
 import android.app.DatePickerDialog
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -184,10 +183,8 @@ class ContactAddEditFragment: Fragment() {
         if (isEmpty) {
             birthday_date_text_view.text = getString(R.string.contact_add_edit_birthday_default)
             birthday_date_text_view.setTypeface(null, Typeface.ITALIC)
-            birthday_date_text_view.setTextColor(Color.GRAY)
         } else {
             birthday_date_text_view.typeface = Typeface.DEFAULT_BOLD
-            birthday_date_text_view.setTextColor(Color.BLACK)
         }
     }
 
