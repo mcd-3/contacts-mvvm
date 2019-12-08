@@ -17,11 +17,13 @@
             android:layout_marginTop="@dimen/margin_top_more"
             android:layout_marginStart="@dimen/margin_start_end"
             android:layout_marginEnd="@dimen/margin_start_end"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:background="?attr/cardBackgroundColor">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/cardBackgroundColor">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/contact_profile_image_view"
@@ -39,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text=""
-                    android:textColor="@color/light_theme_text"
+                    android:textColor="?attr/textColor"
                     android:textSize="@dimen/label_text_size"
                     android:layout_marginTop="@dimen/margin_top"
                     android:layout_marginBottom="@dimen/margin_bottom"
@@ -54,11 +56,13 @@
             android:layout_marginTop="@dimen/margin_top"
             android:layout_marginStart="@dimen/margin_start_end"
             android:layout_marginEnd="@dimen/margin_start_end"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:background="?attr/cardBackgroundColor">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/cardBackgroundColor">
 
             <!-- Email Elements Here-->
 
@@ -72,7 +76,7 @@
                         android:id="@+id/email_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/light_theme_text"
+                        android:textColor="?attr/textColor"
                         android:textSize="@dimen/label_text_size"
                         android:layout_marginTop="@dimen/margin_top_more"
                         android:layout_marginStart="@dimen/margin_start_end"
@@ -91,7 +95,7 @@
                             android:id="@+id/email_text_text_view"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/light_theme_text"
+                            android:textColor="?attr/textColor"
                             android:textSize="@dimen/label_text_size_large"
                             android:layout_marginStart="@dimen/margin_start_end"
                             android:layout_marginEnd="@dimen/margin_start_end"
@@ -135,7 +139,7 @@
                         android:drawablePadding="@dimen/margin_start_end"
                         android:text="@string/contact_add_edit_phone_text_view"
                         android:textSize="@dimen/label_text_size"
-                        android:textColor="@color/light_theme_text" />
+                        android:textColor="?attr/textColor" />
 
                     <LinearLayout
                         android:id="@+id/home_phone_linear_layout"
@@ -157,7 +161,7 @@
                             android:drawableStart="@drawable/ic_home"
                             android:drawablePadding="@dimen/margin_start_end"
                             android:textSize="@dimen/label_text_size_large"
-                            android:textColor="@color/light_theme_text"
+                            android:textColor="?attr/textColor"
                             android:text=""
                             android:layout_weight="6"/>
 
@@ -202,7 +206,7 @@
                             android:drawableStart="@drawable/ic_smartphone"
                             android:drawablePadding="@dimen/margin_start_end"
                             android:textSize="@dimen/label_text_size_large"
-                            android:textColor="@color/light_theme_text"
+                            android:textColor="?attr/textColor"
                             android:text=""
                             android:layout_weight="6"/>
 
@@ -247,7 +251,7 @@
                             android:drawableStart="@drawable/ic_work"
                             android:drawablePadding="@dimen/margin_start_end"
                             android:textSize="@dimen/label_text_size_large"
-                            android:textColor="@color/light_theme_text"
+                            android:textColor="?attr/textColor"
                             android:text=""
                             android:layout_weight="6" />
 
@@ -293,7 +297,7 @@
                         android:drawablePadding="@dimen/margin_start_end"
                         android:text="@string/contact_add_edit_address_text_view"
                         android:textSize="@dimen/label_text_size"
-                        android:textColor="@color/light_theme_text" />
+                        android:textColor="?attr/textColor" />
 
                     <TextView
                         android:id="@+id/address_text_text_view"
@@ -304,7 +308,7 @@
                         android:layout_marginBottom="@dimen/margin_bottom"
                         android:text=""
                         android:textSize="@dimen/label_text_size_large"
-                        android:textColor="@color/light_theme_text"
+                        android:textColor="?attr/textColor"
                         android:textStyle="italic"
                         android:layout_below="@id/address_text_view"
                         android:ellipsize="end"
@@ -332,7 +336,7 @@
                         android:drawablePadding="@dimen/margin_start_end"
                         android:text="@string/contact_add_edit_birthday_text_view"
                         android:textSize="@dimen/label_text_size"
-                        android:textColor="@color/light_theme_text" />
+                        android:textColor="?attr/textColor" />
 
                     <TextView
                         android:id="@+id/birthday_text_text_view"
@@ -343,7 +347,7 @@
                         android:layout_marginBottom="@dimen/margin_bottom"
                         android:text=""
                         android:textSize="@dimen/label_text_size_large"
-                        android:textColor="@color/light_theme_text"
+                        android:textColor="?attr/textColor"
                         android:layout_below="@id/birthday_text_view" />
                 </RelativeLayout>
             </RelativeLayout>

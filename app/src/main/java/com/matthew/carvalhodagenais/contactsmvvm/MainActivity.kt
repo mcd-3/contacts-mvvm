@@ -1,6 +1,8 @@
 package com.matthew.carvalhodagenais.contactsmvvm
 
+import android.content.Context
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.Menu
@@ -15,12 +17,23 @@ import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_contact_add_edit.*
 
-
 class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePickerDialogListener {
 
     private lateinit var receiver: DateChangedBroadcastReceiver
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        sharedPrefs =
+            getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
+
+        //Set the theme
+        if (sharedPrefs.getInt(BaseApp.THEME_PREFERENCE, BaseApp.THEME_LIGHT) == BaseApp.THEME_DARK) {
+            setTheme(R.style.DarkTheme)
+        } else {
+            setTheme(R.style.LightTheme)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -28,7 +41,7 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
         val listFragment: ContactsListFragment = ContactsListFragment.newInstance()
         supportFragmentManager
             .beginTransaction()
-            .replace(main_activity_frame_layout.id, listFragment)
+            .replace(main_activity_frame_layout.id, listFragment, ContactsListFragment.FRAGMENT_TAG)
             .commit()
     }
 

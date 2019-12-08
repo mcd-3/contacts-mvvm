@@ -2,33 +2,54 @@ package com.matthew.carvalhodagenais.contactsmvvm
 
 import android.app.AlertDialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModelFactory
 import kotlinx.android.synthetic.main.activity_settings.*
 
+
 class SettingsActivity : AppCompatActivity() {
 
+    //shared preferences
+    private lateinit var sharedPrefs: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Set the theme
+        var themeIsChcked = false
+        sharedPrefs = getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
+        if(sharedPrefs.getInt(BaseApp.THEME_PREFERENCE, BaseApp.THEME_LIGHT) == BaseApp.THEME_DARK) {
+            setTheme(R.style.DarkTheme)
+        } else {
+            themeIsChcked = true
+            setTheme(R.style.LightTheme)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val sharedPrefs =
-            getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
         settings_notification_switch.isChecked =
             sharedPrefs.getBoolean(BaseApp.NOTIFICATION_PREFERENCE, true)
+        settings_theme_switch.isChecked = themeIsChcked
 
-        val sharedPreferences =
-            getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
+        if(sharedPrefs.getInt(BaseApp.THEME_PREFERENCE, BaseApp.THEME_LIGHT) == BaseApp.THEME_DARK) {
+            settings_theme_switch.isChecked = true
+            setTheme(R.style.DarkTheme)
+        } else {
+            settings_theme_switch.isChecked = false
+            setTheme(R.style.LightTheme)
+        }
 
         settings_delete_all_relative_layout.setOnClickListener(deleteAllOnClick)
         settings_birthday_notification_relative_layout.setOnClickListener(notificationOnClickListener)
         settings_notification_switch.setOnCheckedChangeListener(notificationSwitchOnCheckedListener)
+        settings_theme_switch.setOnCheckedChangeListener(themeSwitchOnCheckListener)
     }
 
     /**
@@ -65,9 +86,25 @@ class SettingsActivity : AppCompatActivity() {
      */
     private val notificationSwitchOnCheckedListener =
         CompoundButton.OnCheckedChangeListener {_, isChecked ->
-            val sharedPrefs = getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()
             editor.putBoolean(BaseApp.NOTIFICATION_PREFERENCE, isChecked)
             editor.apply()
     }
+
+    private val themeSwitchOnCheckListener =
+        CompoundButton.OnCheckedChangeListener{_, isChecked ->
+            val editor = sharedPrefs.edit()
+            editor.putInt(BaseApp.THEME_PREFERENCE, when(isChecked) {
+                true -> BaseApp.THEME_DARK
+                false -> BaseApp.THEME_LIGHT
+            })
+            editor.apply()
+            when(isChecked) {
+                true -> setTheme(R.style.DarkTheme)
+                false -> setTheme(R.style.LightTheme)
+            }
+            val intent = intent
+            finish()
+            startActivity(intent)
+        }
 }

@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/contact_item_padding"
     android:layout_marginEnd="@dimen/contact_item_padding"
-    android:layout_marginTop="@dimen/contact_item_padding">
+    android:layout_marginTop="@dimen/contact_item_padding"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:id="@+id/contact_item_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:background="?android:attr/selectableItemBackground">
+        android:padding="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/contact_profile_image_view"
@@ -34,10 +34,10 @@
             android:layout_marginStart="@dimen/margin_start_end"
             android:layout_marginEnd="@dimen/margin_start_end"
             android:textSize="@dimen/label_text_size_large"
-            android:textColor="@color/light_theme_text"
+            android:textColor="?attr/textColor"
             android:maxLines="2"
             android:ellipsize="end"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
 

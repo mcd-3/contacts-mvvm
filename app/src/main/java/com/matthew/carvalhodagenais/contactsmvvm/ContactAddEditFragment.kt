@@ -30,6 +30,8 @@ class ContactAddEditFragment: Fragment() {
         const val ADD_REQUEST: Int = 1
         const val EDIT_REQUEST: Int = 2
 
+        const val FRAGMENT_TAG = "ContactAddEditFragment"
+
         fun newInstance(requestCode: Int): ContactAddEditFragment {
             val fragment = ContactAddEditFragment()
             val args = Bundle()
@@ -75,9 +77,9 @@ class ContactAddEditFragment: Fragment() {
             val cal = createBirthday(contact.value?.birthday)
             if ( cal != null) {
                 changeDateTextStyle(false)
-                cal.timeInMillis = contact.value?.birthday?.time!!.toLong()
+                cal.timeInMillis = contact.value?.birthday?.time!!
                 birthday_date_text_view.text = "${cal.get(Calendar.DAY_OF_MONTH)}/" +
-                    "${cal.get(Calendar.MONTH + 1)}/${cal.get(Calendar.YEAR)}"
+                    "${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
             }
             contact_profile_image_view.setImageBitmap(viewModel.getContactProfileImage(contact.value!!))
         }
@@ -135,7 +137,8 @@ class ContactAddEditFragment: Fragment() {
         val transaction = activity!!
             .supportFragmentManager.beginTransaction().apply {
             replace(this@ContactAddEditFragment.id,
-                ContactsListFragment.newInstance())
+                ContactsListFragment.newInstance(),
+                ContactsListFragment.FRAGMENT_TAG)
         }
 
         transaction.commit()

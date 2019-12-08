@@ -40,6 +40,8 @@
     <string name="settings_delete_all_alert_title">Delete All Contacts?</string>
     <string name="settings_delete_all_alert_body">Are you sure you want to delete all contacts on this app?
         This action can\'t be undone</string>
+    <string name="settings_theme">Dark Theme</string>
+    <string name="settings_theme_description">Changes the colors to a nice night theme</string>
     <string name="alert_delete">DELETE</string>
     <string name="alert_cancel">CANCEL</string>
 

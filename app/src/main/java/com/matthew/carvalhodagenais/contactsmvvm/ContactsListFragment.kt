@@ -33,6 +33,8 @@ class ContactsListFragment : Fragment() {
         fun newInstance() = ContactsListFragment()
 
         private const val REQUEST_CALL = 1
+
+        const val FRAGMENT_TAG = "ContactsListFragment"
     }
 
     private lateinit var rootView: View
@@ -162,7 +164,7 @@ class ContactsListFragment : Fragment() {
                 .supportFragmentManager.beginTransaction().apply {
                 setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                     R.anim.enter_from_left, R.anim.exit_to_right)
-                replace(this@ContactsListFragment.id, ContactDetailFragment.newInstance())
+                replace(this@ContactsListFragment.id, ContactDetailFragment.newInstance(), ContactDetailFragment.FRAGMENT_TAG)
                 addToBackStack(null)
             }
             transaction.commit()

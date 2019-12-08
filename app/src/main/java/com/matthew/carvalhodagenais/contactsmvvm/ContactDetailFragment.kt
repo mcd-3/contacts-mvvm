@@ -35,6 +35,8 @@ class ContactDetailFragment : Fragment() {
         private const val BUTTON_CALL = 10
         private const val BUTTON_TEXT = 20
         private const val BUTTON_EMAIL = 30
+
+        const val FRAGMENT_TAG = "ContactDetailFragment"
     }
 
     override fun onCreateView(
@@ -46,7 +48,7 @@ class ContactDetailFragment : Fragment() {
         viewModel = ViewModelProviders.of(activity!!,
             ContactListViewModelFactory(activity!!.application)).get(ContactListViewModel::class.java)
         setHasOptionsMenu(true)
-        return view;
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -85,10 +87,10 @@ class ContactDetailFragment : Fragment() {
                 .supportFragmentManager.beginTransaction().apply {
                 setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_top,
                     R.anim.enter_from_top, R.anim.exit_to_bottom)
-                replace(this@ContactDetailFragment.id, fragment)
+                replace(this@ContactDetailFragment.id, fragment, ContactAddEditFragment.FRAGMENT_TAG)
                 addToBackStack(null)
             }
-            transaction.commit();
+            transaction.commit()
             true
         }
         R.id.contact_details_menu_delete -> {

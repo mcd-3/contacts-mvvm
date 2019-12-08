@@ -10,8 +10,11 @@ class BaseApp: Application() {
     companion object {
         const val SHARED_PREFERENCES = "ContactsMVVMSharedPreferences"
         const val NOTIFICATION_PREFERENCE = "ContactsMVVMNotifications"
+        const val THEME_PREFERENCE = "ContactsMVVMTheme"
         const val NOTIFICATION_CHANNEL_1 = "ContactsMVVMChannel1"
         const val NOTIFICATION_CHANNEL_2 = "ContactsMVVMChannel2"
+        const val THEME_LIGHT = 1
+        const val THEME_DARK = 2
     }
 
     override fun onCreate() {

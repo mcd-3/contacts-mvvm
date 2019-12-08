@@ -2,9 +2,20 @@
 <resources>
     <color name="light_theme_text">#000000</color>
     <color name="light_theme_sub_text">#AAAAAA</color>
-    <color name="color_primary">#008577</color>
-    <color name="color_primary_dark">#00574B</color>
-    <color name="color_accent">#D81B60</color>
+    <color name="light_theme_color_primary">#D5924D</color>
+    <color name="light_theme_color_primary_dark">#AC763F</color>
+    <color name="light_theme_color_accent">#FF8300</color>
+    <color name="light_theme_background_color">#FEFEFE</color>
+    <color name="light_theme_card_background_color">#FFFFFF</color>
+<!--    <color name="light_theme_color_accent">#D81B60</color>-->
+
+    <color name="dark_theme_text">#FFFFFF</color>
+    <color name="dark_theme_sub_text">#CCCCCC</color>
+    <color name="dark_theme_color_primary">#333333</color>
+    <color name="dark_theme_color_primary_dark">#131313</color>
+    <color name="dark_theme_color_accent">#F27C00</color>
+    <color name="dark_theme_background_color">#232323</color>
+    <color name="dark_theme_card_background_color">#333333</color>
 
     <color name="call_button">#3fad37</color>
     <color name="call_swipe">#3fad37</color>

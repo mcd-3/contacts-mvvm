@@ -86,7 +86,6 @@ class ContactsRecyclerAdapter: ListAdapter<Contact, ContactsRecyclerAdapter.Cont
         return getItem(position)
     }
 
-
     inner class ContactHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {
