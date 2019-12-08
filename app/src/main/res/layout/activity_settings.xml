@@ -15,7 +15,9 @@
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"
-        android:paddingBottom="@dimen/margin_bottom">
+        android:paddingBottom="@dimen/margin_bottom"
+        android:paddingStart="@dimen/margin_start_end"
+        android:paddingEnd="0dp">
 
         <LinearLayout
             android:baselineAligned="false"
@@ -72,7 +74,8 @@
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"
-        android:paddingBottom="@dimen/margin_bottom">
+        android:paddingStart="@dimen/margin_start_end"
+        android:paddingEnd="0dp">
 
         <LinearLayout
             android:baselineAligned="false"
@@ -127,7 +130,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:paddingBottom="@dimen/margin_bottom"
+        android:paddingStart="@dimen/margin_start_end"
+        android:paddingEnd="0dp"
         android:background="?android:attr/selectableItemBackground">
 
 

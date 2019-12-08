@@ -34,6 +34,8 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        supportActionBar?.title = getString(R.string.title_activity_settings)
+
         settings_notification_switch.isChecked =
             sharedPrefs.getBoolean(BaseApp.NOTIFICATION_PREFERENCE, true)
         settings_theme_switch.isChecked = themeIsChcked
@@ -49,6 +51,7 @@ class SettingsActivity : AppCompatActivity() {
         settings_delete_all_relative_layout.setOnClickListener(deleteAllOnClick)
         settings_birthday_notification_relative_layout.setOnClickListener(notificationOnClickListener)
         settings_notification_switch.setOnCheckedChangeListener(notificationSwitchOnCheckedListener)
+        settings_theme_relative_layout.setOnClickListener(themeOnClickListener)
         settings_theme_switch.setOnCheckedChangeListener(themeSwitchOnCheckListener)
     }
 
@@ -91,6 +94,16 @@ class SettingsActivity : AppCompatActivity() {
             editor.apply()
     }
 
+    /**
+     * View Listener to turn on/off the dark theme
+     */
+    private val themeOnClickListener = View.OnClickListener {
+        settings_theme_switch.isChecked = !(settings_theme_switch.isChecked)
+    }
+
+    /**
+     * Switch Listener to turn on/off the dark theme
+     */
     private val themeSwitchOnCheckListener =
         CompoundButton.OnCheckedChangeListener{_, isChecked ->
             val editor = sharedPrefs.edit()
