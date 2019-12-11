@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.contactsmvvm
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
@@ -119,5 +118,8 @@ class SettingsActivity : AppCompatActivity() {
             val intent = intent
             finish()
             startActivity(intent)
+
+            //Make sure to recreate view
+            MainActivity.themeIsChanged = true
         }
 }

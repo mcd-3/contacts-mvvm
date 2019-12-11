@@ -22,8 +22,12 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
     private lateinit var receiver: DateChangedBroadcastReceiver
     private lateinit var sharedPrefs: SharedPreferences
 
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    companion object {
+        var themeIsChanged: Boolean = false
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         sharedPrefs =
             getSharedPreferences(BaseApp.SHARED_PREFERENCES, Context.MODE_PRIVATE)
 
@@ -46,6 +50,12 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
     }
 
     override fun onStart() {
+        //Recreate view if theme was changed
+        if (themeIsChanged) {
+            themeIsChanged = false
+            recreate()
+        }
+
         super.onStart()
         val viewModel = ViewModelProviders.of(this,
             ContactListViewModelFactory(this.application)).get(ContactListViewModel::class.java)

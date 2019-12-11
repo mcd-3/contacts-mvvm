@@ -10,7 +10,6 @@ import java.io.*
 import java.lang.Exception
 import java.util.*
 
-
 class ImageDataHelper {
 
     companion object {
@@ -72,7 +71,7 @@ class ImageDataHelper {
             val context = cntxt
             val bitmap = btmp
             override fun doInBackground(vararg params: String?) {
-                val contextWrapper: ContextWrapper = ContextWrapper(context.applicationContext)
+                val contextWrapper = ContextWrapper(context.applicationContext)
                 val directory: File = contextWrapper.getDir("profileImages", Context.MODE_PRIVATE)
                 val path = File(directory, params[0].toString())
                 var outputStream: FileOutputStream? = null
