@@ -18,6 +18,7 @@ import java.util.*
 class ContactAddEditFragment: Fragment() {
 
     private lateinit var viewModel: ContactListViewModel
+    private lateinit var profilePickerDialog: ProfilePickerDialogFragment
     private var birthdayToSave: Calendar? = null
 
     companion object {
@@ -192,8 +193,8 @@ class ContactAddEditFragment: Fragment() {
      * Opens a new ProfilePickerDialog so that the user can select an image for a profile picture
      */
     private fun openDialog() {
-        val profileDialog = ProfilePickerDialogFragment()
-        profileDialog.show(fragmentManager!!, PROFILE_DIALOG_TAG)
+        profilePickerDialog = ProfilePickerDialogFragment()
+        profilePickerDialog.show(fragmentManager!!, PROFILE_DIALOG_TAG)
     }
 
     /**

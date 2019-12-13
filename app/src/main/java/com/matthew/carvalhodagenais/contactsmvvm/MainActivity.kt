@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
     private lateinit var receiver: DateChangedBroadcastReceiver
     private lateinit var sharedPrefs: SharedPreferences
 
-
     companion object {
+        private const val FRAGMENT_KEY = "com.matthew.carvalhodagenais.MainActivity.KEY"
         var themeIsChanged: Boolean = false
     }
 
@@ -42,11 +42,19 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
         setContentView(R.layout.activity_main)
 
         //Set initial fragment
-        val listFragment: ContactsListFragment = ContactsListFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(main_activity_frame_layout.id, listFragment, ContactsListFragment.FRAGMENT_TAG)
-            .commit()
+        if (savedInstanceState != null) {
+            val fragment =
+                supportFragmentManager.getFragment(savedInstanceState, FRAGMENT_KEY)
+            supportFragmentManager.beginTransaction()
+                .replace(main_activity_frame_layout.id, fragment!!, null)
+                .commit()
+        } else {
+            val listFragment: ContactsListFragment = ContactsListFragment.newInstance()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(main_activity_frame_layout.id, listFragment, ContactsListFragment.FRAGMENT_TAG)
+                .commit()
+        }
     }
 
     override fun onStart() {
@@ -67,10 +75,26 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        //Prevent the receiver from leaking
+        unregisterReceiver(receiver)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.contact_list_menu, menu)
         return true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val fragment =
+            supportFragmentManager.fragments.get(supportFragmentManager.fragments.size - 1)
+        if (fragment != null) {
+            supportFragmentManager.putFragment(outState, FRAGMENT_KEY, fragment)
+        }
     }
 
     override fun changeProfileBitmap(bitmap: Bitmap) {
