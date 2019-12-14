@@ -11,8 +11,7 @@ import com.matthew.carvalhodagenais.contactsmvvm.R
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
 import java.util.*
 
-class DateChangedBroadcastReceiver(contactList: List<Contact>): BroadcastReceiver() {
-
+class DateChangedBroadcastReceiver(contactList: List<Contact> = emptyList()): BroadcastReceiver() {
     private val contacts = contactList
 
     override fun onReceive(context: Context?, intent: Intent?) {
