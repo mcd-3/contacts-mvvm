@@ -19,7 +19,6 @@ class ContactAddEditFragment: Fragment() {
 
     private lateinit var viewModel: ContactListViewModel
     private lateinit var profilePickerDialog: ProfilePickerDialogFragment
-    private var birthdayToSave: Calendar? = null
 
     companion object {
         const val REQUEST_CODE: String = "com.matthew.carvalhodagenais" +
@@ -31,6 +30,8 @@ class ContactAddEditFragment: Fragment() {
         const val EDIT_REQUEST: Int = 2
 
         const val FRAGMENT_TAG = "ContactAddEditFragment"
+
+        private var birthdayToSave: Calendar? = null
 
         fun newInstance(requestCode: Int): ContactAddEditFragment {
             val fragment = ContactAddEditFragment()
@@ -80,6 +81,7 @@ class ContactAddEditFragment: Fragment() {
                 cal.timeInMillis = contact.value?.birthday?.time!!
                 birthday_date_text_view.text = "${cal.get(Calendar.DAY_OF_MONTH)}/" +
                     "${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
+                birthdayToSave = cal
             }
             contact_profile_image_view.setImageBitmap(viewModel.getContactProfileImage(contact.value!!))
         }
@@ -102,6 +104,36 @@ class ContactAddEditFragment: Fragment() {
         }
         else -> {
             super.onOptionsItemSelected(item)
+        }
+    }
+
+    /**
+     * See if the input values have changed or not
+     *
+     * @return boolean
+     */
+    fun areInputsDifferent(): Boolean {
+        if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
+            //Check if each input matches the contact's values
+            val contact: Contact? = viewModel.getSelectedContact().value
+            return !(first_name_edit_text.text.toString() == contact?.first_name &&
+                    last_name_edit_text.text.toString() == contact.last_name &&
+                    email_edit_text.text.toString() == contact.email &&
+                    home_phone_edit_text.text.toString() == contact.phone_home &&
+                    cell_phone_edit_text.text.toString() == contact.phone_cell &&
+                    work_phone_edit_text.text.toString() == contact.phone_work &&
+                    address_edit_text.text.toString() == contact.address &&
+                    birthdayToSave?.timeInMillis == contact.birthday?.time)
+        } else {
+            //Check if each input is empty
+            return !(first_name_edit_text.text.toString() == "" &&
+                    last_name_edit_text.text.toString() == "" &&
+                    email_edit_text.text.toString() == "" &&
+                    home_phone_edit_text.text.toString() == "" &&
+                    cell_phone_edit_text.text.toString() == "" &&
+                    work_phone_edit_text.text.toString() == "" &&
+                    address_edit_text.text.toString() == "" &&
+                    birthdayToSave == null)
         }
     }
 

@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,6 +17,7 @@ import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_contact_add_edit.*
+
 
 class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePickerDialogListener {
 
@@ -77,7 +79,6 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
 
     override fun onDestroy() {
         super.onDestroy()
-        //Prevent the receiver from leaking
         unregisterReceiver(receiver)
     }
 
@@ -89,11 +90,30 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
         val fragment =
             supportFragmentManager.fragments.get(supportFragmentManager.fragments.size - 1)
         if (fragment != null) {
             supportFragmentManager.putFragment(outState, FRAGMENT_KEY, fragment)
+        }
+    }
+
+    override fun onBackPressed() {
+        val fragment =
+            supportFragmentManager.fragments.get(supportFragmentManager.fragments.size - 1)
+        if (fragment is ContactAddEditFragment && fragment.areInputsDifferent()) {
+            val builder = AlertDialog.Builder(this)
+                .setTitle(getString(R.string.dialog_back_title))
+                .setMessage(getString(R.string.dialog_back_body))
+                .setNegativeButton(getString(R.string.dialog_cancel)){_, _ ->
+                    //Do nothing
+                }
+                .setPositiveButton(getString(R.string.dialog_discard)){_, _ ->
+                    super.onBackPressed()
+                }
+                val dialog = builder.create()
+            dialog.show()
+        } else {
+            super.onBackPressed()
         }
     }
 

@@ -33,7 +33,7 @@ class ProfilePickerDialogFragment: AppCompatDialogFragment() {
         val view: View = inflater.inflate(R.layout.fragment_dialog_image_select, null)
 
         builder.setView(view)
-            .setTitle(getString(R.string.dialog_title))
+            .setTitle(getString(R.string.dialog_image_title))
             .setNegativeButton(getString(R.string.dialog_cancel), negativeOnClick)
 
         val cameraButton = view.findViewById<Button>(R.id.dialog_camera)

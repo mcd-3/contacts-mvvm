@@ -31,8 +31,11 @@
     <string name="menu_title_edit">Edit</string>
     <string name="dialog_camera">Camera</string>
     <string name="dialog_gallery">Gallery</string>
-    <string name="dialog_title">Select Image How?</string>
+    <string name="dialog_back_title">Discard Changes?</string>
+    <string name="dialog_image_title">Select Image How?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_discard">Discard</string>
+    <string name="dialog_back_body">Are you sure you want to discard changes?</string>
     <string name="settings_delete_all">Delete All Contacts</string>
     <string name="settings_notifications">Birthday Notifications</string>
     <string name="settings_delete_all_description">This will delete all of your contacts stored on this app</string>
