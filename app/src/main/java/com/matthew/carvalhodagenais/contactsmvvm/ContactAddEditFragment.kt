@@ -7,11 +7,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
 import com.matthew.carvalhodagenais.contactsmvvm.helpers.ImageDataHelper
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
-import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_contact_add_edit.*
 import java.util.*
 
@@ -48,8 +46,7 @@ class ContactAddEditFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_contact_add_edit, container, false)
-        viewModel = ViewModelProviders.of(activity!!,
-            ContactListViewModelFactory(activity!!.application)).get(ContactListViewModel::class.java)
+        viewModel = (activity as MainActivity).getViewModel()
         setHasOptionsMenu(true)
         return view
     }

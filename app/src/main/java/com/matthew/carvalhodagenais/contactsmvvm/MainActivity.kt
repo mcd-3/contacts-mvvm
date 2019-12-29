@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_contact_add_edit.*
 
 class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePickerDialogListener {
 
+    private lateinit var viewModel: ContactListViewModel
     private lateinit var receiver: DateChangedBroadcastReceiver
     private lateinit var sharedPrefs: SharedPreferences
 
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Set viewModel
+        viewModel = ViewModelProviders.of(this,
+            ContactListViewModelFactory(this.application)).get(ContactListViewModel::class.java)
 
         //Set initial fragment
         if (savedInstanceState != null) {
@@ -123,5 +128,9 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
         } catch (e: Exception) { //might not be in ContactAddEditFragment
             e.printStackTrace()
         }
+    }
+
+    fun getViewModel(): ContactListViewModel {
+        return viewModel
     }
 }

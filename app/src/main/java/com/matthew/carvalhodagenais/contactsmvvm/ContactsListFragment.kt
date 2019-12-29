@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Canvas
 import android.graphics.Color
 import android.net.Uri
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -20,12 +19,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matthew.carvalhodagenais.contactsmvvm.adapters.ContactsRecyclerAdapter
 import com.matthew.carvalhodagenais.contactsmvvm.data.entities.Contact
 import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModel
-import com.matthew.carvalhodagenais.contactsmvvm.viewmodels.ContactListViewModelFactory
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 import kotlinx.android.synthetic.main.fragment_contact_list.view.*
 import java.lang.Exception
-import java.util.*
 
 class ContactsListFragment : Fragment() {
 
@@ -49,8 +46,7 @@ class ContactsListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_contact_list, container, false)
-        viewModel = ViewModelProviders.of(activity!!,
-            ContactListViewModelFactory(activity!!.application)).get(ContactListViewModel::class.java)
+        viewModel = (activity as MainActivity).getViewModel()
         setHasOptionsMenu(true)
         return rootView
     }
