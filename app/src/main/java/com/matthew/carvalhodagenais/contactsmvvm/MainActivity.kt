@@ -130,6 +130,9 @@ class MainActivity : AppCompatActivity(), ProfilePickerDialogFragment.ProfilePic
         }
     }
 
+    /**
+     * Get the view model so we don't have to recreate it
+     */
     fun getViewModel(): ContactListViewModel {
         return viewModel
     }
